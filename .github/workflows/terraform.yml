@@ -80,9 +80,11 @@ jobs:
       run: |
         cd terraform
         terraform init
+        
         terraform import aws_iam_role.lambda_role lambda_snapshot_role
         terraform import aws_lambda_function.snapshot_cleaner snapshot-cleaner
         terraform import aws_lambda_permission.allow_eventbridge snapshot-cleaner/AllowEventBridgeSnapshotCleanup
+        terraform import aws_cloudwatch_log_group.lambda_logs /aws/lambda/snapshot-cleaner
         terraform plan
         terraform apply -auto-approve
       # On push to "main", build or change infrastructure according to Terraform configuration files
