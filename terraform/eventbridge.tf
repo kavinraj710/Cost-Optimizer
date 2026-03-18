@@ -10,7 +10,7 @@ resource "aws_cloudwatch_event_target" "lambda_target" {
 }
 
 resource "aws_lambda_permission" "allow_eventbridge" {
-  statement_id  = "AllowExecutionFromEventBridge"
+statement_id = "AllowEventBridge-${aws_cloudwatch_event_rule.monthly.name}"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.snapshot_cleaner.function_name
   principal     = "events.amazonaws.com"
