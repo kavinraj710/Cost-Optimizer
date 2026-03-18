@@ -30,8 +30,10 @@ jobs:
 
       # 4️⃣ Terraform Init (with backend)
       - name: Terraform Init
+        working-directory: terraform
         run: terraform init
 
       # 5️⃣ Terraform Destroy
       - name: Terraform Destroy
+        working-directory: terraform
         run: terraform destroy -auto-approve
