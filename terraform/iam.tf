@@ -29,6 +29,15 @@ resource "aws_iam_role_policy" "lambda_policy" {
           "ec2:DeleteSnapshot"
         ],
         Resource = "*"
+      },
+      {
+        Effect = "Allow",
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        Resource = "*"
       }
     ]
   })
