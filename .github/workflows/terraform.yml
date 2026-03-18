@@ -47,7 +47,9 @@ name: ' Deploy AWS Cost Optimizer'
 on:
   push:
     branches: [ "main" ]
-
+permissions:
+  id-token: write
+  contents: read
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -71,11 +73,10 @@ jobs:
         zip -r ../lambda.zip .
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Configure AWS Credentials
+    - name: Configure AWS Credentials (OIDC)
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        role-to-assume: arn:aws:iam::180294211272:role/Cost_Optimizer
         aws-region: ap-south-1
 
     - name: Terraform Deploy
