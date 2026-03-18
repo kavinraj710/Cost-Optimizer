@@ -81,6 +81,8 @@ jobs:
         cd terraform
         terraform init
         terraform import aws_iam_role.lambda_role lambda_snapshot_role
+        terraform import aws_lambda_function.snapshot_cleaner snapshot-cleaner
+        terraform plan
         terraform apply -auto-approve
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
