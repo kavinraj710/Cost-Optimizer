@@ -62,10 +62,6 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Install dependencies
-      run: |
-        cd lambda
-        pip install -r requirements.txt -t .
 
     - name: Zip Lambda
       run: |
