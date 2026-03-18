@@ -62,7 +62,8 @@ jobs:
       with:
         python-version: 3.9
 
-
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
     - name: Zip Lambda
       run: |
         cd lambda
