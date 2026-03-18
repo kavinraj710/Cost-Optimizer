@@ -2,7 +2,9 @@ import boto3
 from datetime import datetime, timedelta, timezone
 
 ec2 = boto3.client('ec2')
-
+import logging
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 def lambda_handler(event, context):
     retention_days = 30
     cutoff_date = datetime.now(timezone.utc) - timedelta(days=retention_days)
