@@ -30,15 +30,17 @@ resource "aws_iam_role_policy" "lambda_policy" {
         ],
         Resource = "*"
       },
-      {
-        Effect = "Allow",
-        Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents"
-        ],
-        Resource = "*"
-      }
+{
+  "Effect": "Allow",
+  "Action": [
+    "logs:CreateLogGroup",
+    "logs:CreateLogStream",
+    "logs:PutLogEvents",
+    "logs:DeleteLogGroup",
+    "logs:DescribeLogGroups"
+  ],
+  "Resource": "*"
+}
     ]
   })
 }
