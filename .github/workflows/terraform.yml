@@ -87,6 +87,10 @@ jobs:
         terraform import aws_cloudwatch_log_group.lambda_logs /aws/lambda/snapshot-cleaner
         terraform plan
         terraform apply -auto-approve
+    - name: Terraform Destroy
+      run: |
+       cd terraform
+       terraform destroy -auto-approve
       
       
     - name: Terraform Apply
